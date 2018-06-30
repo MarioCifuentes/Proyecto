@@ -1,0 +1,213 @@
+\documentclass{article}
+
+
+%%%
+%PLOTS mapas y conglomerados
+%Bibliografía
+%%%
+\usepackage[utf8]{inputenc}
+\usepackage{longtable}
+\usepackage{authblk}
+\usepackage{adjustbox}
+\usepackage{natbib}
+
+\title{LOS INDICES DE COLOMBIA}
+\author[1]{\normalsize Mario Andrés Cifuentes}
+\affil[1,2]{\small  Departamento Ingeniería Industrial,Universidad de los Andes\\
+\texttt{{ma.cifuentes10}@uniandes.edu.co}}
+
+\date{29 de Junio de 2018}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+\maketitle
+
+
+\begin{abstract}
+Este es el proyecto de aplicación de los contenidos vistos durante el curso de herramientas computacionales para investigación, en la Universidad de los Andes.
+\end{abstract}
+
+\section*{Introducción}
+
+Aqui les presento mi investigacion sobre diversos indices sociales en el mundo. Los indices los conseguí de wikipedia, espero que les gusten mucho. Aqui les presento mi investigacion sobre diversos indices sociales en el mundo. Los indices los conseguí de wikipedia, espero que les gusten mucho.Aqui les presento mi investigacion sobre diversos indices sociales en el mundo. Los indices los conseguí de wikipedia, espero que les gusten mucho.Aqui les presento mi investigacion sobre diversos indices sociales en el mundo. Los indices los conseguí de wikipedia, espero que les gusten mucho.
+Aqui les presento mi investigacion sobre diversos indices sociales en el mundo. Los indices los conseguí de wikipedia, espero que les gusten mucho.Aqui les presento mi investigacion sobre diversos indices sociales en el mundo. Los indices los conseguí de wikipedia, espero que les gusten mucho.Aqui les presento mi investigacion sobre diversos indices sociales en el mundo. Los indices los conseguí de wikipedia, espero que les gusten mucho.
+
+\clearpage
+
+\section{Exploración Univariada}\label{univariada}
+
+En esta sección exploro cada índice. En esta sección exploro cada índice. En esta sección exploro cada índice. En esta sección exploro cada índice. En esta sección exploro cada índice. En esta sección exploro cada índice. En esta sección exploro cada índice. En esta sección exploro cada índice. En esta sección exploro cada índice.
+
+<<getData, echo=FALSE>>=
+filename="colombia.csv"
+colb=read.csv(filename, stringsAsFactors = FALSE)
+@
+
+<<results=tex,echo=FALSE>>=
+library(stargazer)
+vars<-colb[,c(1:4)]
+stargazer(vars,title="Medias estadísticas",label="stats",summary.stat = c("n","min","median","max"))
+
+@
+
+<<Histogramas, echo=FALSE, fig=TRUE>>=
+par(mfrow=c(1,3))
+paleta="red"
+hist(colb$IDH,main = "Histograma IDH",col = paleta)
+paleta2="blue"
+hist(colb$Población.Cabecera,main="Histograma Cabecera",col=paleta2)
+paleta3="green"
+hist(colb$Población.Resto,main = "Histograma Resto",col = paleta3)
+@
+
+Hay que tener en cuenta que los datos acerca de las poblaciones pueden llegar a estar sesgados, por lo cual se pueden corrgir este error mediante la normalización de los datos que se presenta a continuación.
+
+
+\begin{figure}[h]
+\centering
+\begin{adjustbox}{width=7cm,height=7cm,clip,trim=1.5cm 0.5cm 0cm 1.5cm}
+<<Normalizados, echo=FALSE,fig=TRUE>>=
+par(mfrow=c(1,2))
+
+colb$cabeLog=log(colb$Población.Cabecera)
+colb$restoLog=log(colb$Población.Resto)
+
+hist(colb$cabeLog,
+     main="Población Cabecera", 
+     xlab="Población",
+     col="pink")
+hist(colb$restoLog, 
+     main="Población Restante", 
+     xlab="Población",
+     col="yellow")
+
+@
+\end{adjustbox}
+\caption{Histogramas Población Normalizados }
+\label{histplotsNorm}
+\end{figure}
+
+\section{Exploración Bivariada}\label{bivariada}
+
+Ahora se analizará el impacto que tienen otros indices, mediante el estudio de las relaciones bivariadas.
+
+<<corrDem, results=tex, echo=FALSE>>=
+explanans=names(colb)[c(7:8)] # usando las logs
+corrDem=cor(colb$IDH,colb[,explanans],
+            use = "na.or.complete")
+stargazer(corrDem, title="Correlación de Democracia con las demás variables",label = "corrDem")
+@
+
+Ahora se estudiara la correlación entre variables independientes:
+
+<<corrTableX, results=tex, echo=FALSE>>=
+corrTableX=round(cor(colb[,explanans],
+                         use = "na.or.complete"),1)
+corrTableX_copy=corrTableX
+corrTableX[upper.tri(corrTableX)]<-""
+#ver:
+
+stargazer(corrTableX, title="Correlación de variables independientes",label = 'corrTableX')
+@
+
+A la tabla anterior se le relaciona la siguiente gráfica:
+
+\begin{figure}[h]
+\centering
+\begin{adjustbox}{}
+<<corrPlotX, echo=FALSE,fig=TRUE>>=
+plot(colb[,explanans], col="blue")
+@
+\end{adjustbox}
+\caption{Correlación entre variables significativas}
+\label{corrPlotX}
+\end{figure}
+
+\section{Modelos de Regresión}\label{modelos}
+
+Ahora se analizarán los distintos modelos propuestos para el caso de estudio.
+
+<<regresiones, echo=FALSE>>=
+LinRegA = lm(IDH ~ ., data = colb[,c(1,7)])
+LinRegB = lm(IDH ~ ., data = colb[,c(1,7:8)])
+@
+
+<<regresionesPlot,results=tex, echo=FALSE>>=
+stargazer(LinRegA,LinRegB,
+          title = "Modelos de Regresión", 
+          label = "regresiones")
+@
+
+\section{Exploración Espacial}\label{exploracion}
+
+Se calcuaran los conglomerados por regiones usando la información disponible de las variables significativas para el problema. Se utilizará la técnica de k-means propuesta por \cite{macqueen_methods_nodate}.
+
+<<getMap, echo=FALSE,results=hide>>=
+library(rgdal)
+folder='COL_maps'
+file='COL_adm1.shp'
+mapaFile=file.path(folder,file)
+mapCol <- rgdal::readOGR(mapaFile,stringsAsFactors=F) 
+
+# con esto hagamos el merge:
+sub_colb=colb[,c(1:2,7:8)]
+mapCol_idh=merge(mapCol,sub_colb, by.x='NAME_1', by.y='Departamento',all.x=F)
+
+# cuantas regiones me quedaron luego del merge?
+nrow(mapCol_idh)  # todas!!...
+
+
+# preparacion para clusterizar:
+
+# que tengo?:
+names(mapCol_idh)
+@
+
+
+<<echo=FALSE>>=
+dimensions=c("NAME_1","IDH","cabeLog","restoLog")
+library(cluster)
+dataCluster=mapCol_idh@data[,c(dimensions)]
+# como la data es numerica la normalizo (menos la column 1):
+dataCluster[,-1]=scale(dataCluster[,-1])
+resultado=kmeans(dataCluster[,-1],3)
+
+#creo data frame con los clusters:
+clusters=as.data.frame(resultado$cluster)
+
+# aÃ±ado columna con nombre de regiones
+clusters$NAME_1=dataCluster$NAME_1
+names(clusters)=c('cluster','NAME_1')
+#hago el merge hacia el mapa:
+mapCol_idh=merge(mapCol_idh,clusters, by='NAME_1',all.x=F)
+@
+
+\begin{figure}[h]
+\centering
+\begin{adjustbox}{width=12cm,height=12cm,clip,trim=0cm 0cm 0cm 0cm}
+<<plotMap1, echo=FALSE, fig=TRUE>>=
+library(RColorBrewer)
+library(classInt)
+varToPLot=mapCol_idh$cluster
+numberOfClasses = length(unique(varToPLot)) 
+colorForScale='Set2'
+paleta = brewer.pal(numberOfClasses, colorForScale)
+plot(mapCol,col='grey',border=0)
+plot(mapCol_idh, col = paleta[varToPLot],border=F,add=T)
+legend('left', legend = c("LOW","UP","MEDIUM"),
+       fill = paleta, 
+       cex = 0.6, 
+       bty = "n",
+       title="conglomerado")
+@
+\end{adjustbox}
+\caption{Departamentos según sus indicadores}\label{clustmap}
+\end{figure}
+
+
+\bibliographystyle{abbrv}
+%\renewcommand{\refname}{Bibliografía}
+\bibliography{proyecto}
+
+\end{document}
