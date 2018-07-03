@@ -123,7 +123,7 @@ plot(colb[,explanans], col="blue")
 \caption{Correlación entre variables significativas}
 \label{corrPlotX}
 \end{figure}
-
+\clearpage
 \section{Modelos de Regresión}\label{modelos}
 
 Ahora se analizarán los distintos modelos propuestos para el caso de estudio.
@@ -138,7 +138,7 @@ stargazer(LinRegA,LinRegB,
           title = "Modelos de Regresión", 
           label = "regresiones")
 @
-
+\clearpage
 \section{Exploración Espacial}\label{exploracion}
 
 Se calcuaran los conglomerados por regiones usando la información disponible de las variables significativas para el problema. Se utilizará la técnica de k-means propuesta por \cite{macqueen_methods_nodate}.
