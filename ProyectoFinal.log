@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.6.27)  3 JUL 2018 09:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.6.27)  4 JUL 2018 19:28
 entering extended mode
 **./ProyectoFinal.tex
 (ProyectoFinal.tex
@@ -446,10 +446,9 @@ Package: natbib 2010/09/13 8.31b (PWD, AO)
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count98
 )
-(C:/PROGRA~1/R/R-34~1.1/share/texmf/tex/latex\Sweave.sty
+(Sweave.sty
 Package: Sweave 
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty"
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty"
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
 (C:\Users\MarioA\AppData\Roaming\MiKTeX\2.9\tex\latex\fancyvrb\fancyvrb.sty
@@ -743,12 +742,12 @@ File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 <ProyectoFinal-Histogramas.pdf, id=14, 433.62pt x 433.62pt>
 File: ProyectoFinal-Histogramas.pdf Graphic file (type pdf)
 <use ProyectoFinal-Histogramas.pdf>
-Package pdftex.def Info: ProyectoFinal-Histogramas.pdf  used on input line 60.
+Package pdftex.def Info: ProyectoFinal-Histogramas.pdf  used on input line 59.
 (pdftex.def)             Requested size: 276.00105pt x 276.0139pt.
 <ProyectoFinal-Normalizados.pdf, id=15, 433.62pt x 433.62pt>
 File: ProyectoFinal-Normalizados.pdf Graphic file (type pdf)
 <use ProyectoFinal-Normalizados.pdf>
-Package pdftex.def Info: ProyectoFinal-Normalizados.pdf  used on input line 68.
+Package pdftex.def Info: ProyectoFinal-Normalizados.pdf  used on input line 67.
 
 (pdftex.def)             Requested size: 276.00105pt x 276.0139pt.
 
@@ -761,7 +760,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <ProyectoFinal-corrPlotX.pdf, id=25, 433.62pt x 433.62pt>
 File: ProyectoFinal-corrPlotX.pdf Graphic file (type pdf)
 <use ProyectoFinal-corrPlotX.pdf>
-Package pdftex.def Info: ProyectoFinal-corrPlotX.pdf  used on input line 114.
+Package pdftex.def Info: ProyectoFinal-corrPlotX.pdf  used on input line 113.
 (pdftex.def)             Requested size: 276.00105pt x 276.0139pt.
 
 
@@ -774,19 +773,19 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <ProyectoFinal-plotMap1.pdf, id=50, 433.62pt x 433.62pt>
 File: ProyectoFinal-plotMap1.pdf Graphic file (type pdf)
 <use ProyectoFinal-plotMap1.pdf>
-Package pdftex.def Info: ProyectoFinal-plotMap1.pdf  used on input line 168.
+Package pdftex.def Info: ProyectoFinal-plotMap1.pdf  used on input line 167.
 (pdftex.def)             Requested size: 276.00105pt x 276.0139pt.
  (ProyectoFinal.bbl) [6
 
  <./ProyectoFinal-plotMap1.pdf>] (ProyectoFinal.aux) ) 
 Here is how much of TeX's memory you used:
- 4481 strings out of 493305
- 63138 string characters out of 3138871
- 119368 words of memory out of 3000000
- 7899 multiletter control sequences out of 15000+200000
+ 4476 strings out of 493305
+ 62972 string characters out of 3138871
+ 119358 words of memory out of 3000000
+ 7895 multiletter control sequences out of 15000+200000
  28961 words of font info for 58 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,9n,37p,624b,358s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,9n,37p,464b,358s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 
 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmbx9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
@@ -799,7 +798,7 @@ MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2
 .9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/
 type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
 blic/amsfonts/cm/cmtt9.pfb>
-Output written on ProyectoFinal.pdf (6 pages, 594292 bytes).
+Output written on ProyectoFinal.pdf (6 pages, 593963 bytes).
 PDF statistics:
  96 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

@@ -30,8 +30,7 @@ Este es el proyecto de aplicación de los contenidos vistos durante el curso de 
 
 \section*{Introducción}
 
-Aqui les presento mi investigacion sobre diversos indices sociales en el mundo. Los indices los conseguí de wikipedia, espero que les gusten mucho. Aqui les presento mi investigacion sobre diversos indices sociales en el mundo. Los indices los conseguí de wikipedia, espero que les gusten mucho.Aqui les presento mi investigacion sobre diversos indices sociales en el mundo. Los indices los conseguí de wikipedia, espero que les gusten mucho.Aqui les presento mi investigacion sobre diversos indices sociales en el mundo. Los indices los conseguí de wikipedia, espero que les gusten mucho.
-Aqui les presento mi investigacion sobre diversos indices sociales en el mundo. Los indices los conseguí de wikipedia, espero que les gusten mucho.Aqui les presento mi investigacion sobre diversos indices sociales en el mundo. Los indices los conseguí de wikipedia, espero que les gusten mucho.Aqui les presento mi investigacion sobre diversos indices sociales en el mundo. Los indices los conseguí de wikipedia, espero que les gusten mucho.
+Aqui les presento mi investigacion sobre diversos indices sociales en Colombia. Los indices los conseguí de wikipedia, con ayuda del profesor José Manuel Magallanes. En este trabajo se presentara un informe básico sobre el comportamiento del indice de desarrollo humano en colombia, realizado a traves del análisis de distintas herramientas estadísticas tales como regresiones lineales, histogramas, y análisis de correlación. 
 
 \clearpage
 
