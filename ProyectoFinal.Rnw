@@ -207,6 +207,6 @@ legend('left', legend = c("LOW","UP","MEDIUM"),
 
 \bibliographystyle{abbrv}
 %\renewcommand{\refname}{Bibliografía}
-\bibliography{proyecto}
+\bibliography{Proyecto}
 
 \end{document}
